@@ -7,14 +7,16 @@
 //
 
 import Foundation
+import Result
+
 @testable import KataSuperHeroes
 
 class MockSuperHeroesRepository: SuperHeroesRepository {
 
     var superHeroes = [SuperHero]()
 
-    override func getAll(_ completion: @escaping ([SuperHero]) -> ()) {
-        completion(superHeroes)
+    override func getAll(_ completion: @escaping (Result<[SuperHero], SuperHeroAPIError>) -> ()) {
+        completion(.success(superHeroes))
     }
 
     override func getSuperHero(withName name: String, completion: @escaping (SuperHero?) -> ()) {

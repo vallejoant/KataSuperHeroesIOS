@@ -11,12 +11,13 @@ import UIKit
 import SDWebImage
 
 class SuperHeroDetailViewController: KataSuperHeroesViewController, SuperHeroDetailUI {
-
+    
     @IBOutlet weak var avengersBadgeImageView: UIImageView!
 
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var errorLabel: UILabel!
 
     var presenter: SuperHeroDetailPresenter!
 
@@ -25,10 +26,7 @@ class SuperHeroDetailViewController: KataSuperHeroesViewController, SuperHeroDet
         presenter.viewDidLoad()
     }
 
-    func show(superHero: SuperHero?) {
-        guard let superHero = superHero else {
-            return
-        }
+    func show(superHero: SuperHero) {
         userLabel.text = superHero.name
         userLabel.accessibilityLabel = "Name: \(superHero.name)"
         userLabel.isHidden = false
@@ -37,5 +35,12 @@ class SuperHeroDetailViewController: KataSuperHeroesViewController, SuperHeroDet
         descriptionLabel.isHidden = false
         photoImageView.sd_setImage(with: superHero.photo)
         avengersBadgeImageView.isHidden = !superHero.isAvenger
+        avengersBadgeImageView.accessibilityLabel = "Avenger badge"
+    }
+    
+    func showError() {
+        errorLabel.text = "Not found"
+        errorLabel.accessibilityLabel = "Not found"
+        errorLabel.isHidden = false
     }
 }

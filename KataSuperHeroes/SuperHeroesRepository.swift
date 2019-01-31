@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Result
 
 class SuperHeroesRepository {
 
@@ -103,9 +104,9 @@ class SuperHeroesRepository {
             ]
     }
 
-    func getAll(_ completion: @escaping ([SuperHero]) -> ()) {
+    func getAll(_ completion: @escaping (Result<[SuperHero], SuperHeroAPIError>) -> ()) {
         delay(1.5) {
-            completion(self.superHeroes)
+            completion(.success(self.superHeroes))
         }
     }
 

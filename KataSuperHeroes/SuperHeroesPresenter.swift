@@ -20,12 +20,18 @@ class SuperHeroesPresenter {
 
     func viewDidLoad() {
         ui?.showLoader()
-        getSuperHeroes.execute { superHeroes in
+        getSuperHeroes.execute { result in
             self.ui?.hideLoader()
-            if superHeroes.isEmpty {
-                self.ui?.showEmptyCase()
-            } else {
-                self.ui?.show(items: superHeroes)
+            
+            switch result {
+            case .success(let superHeroes):
+                if superHeroes.isEmpty {
+                    self.ui?.showEmptyCase()
+                } else {
+                    self.ui?.show(items: superHeroes)
+                }
+            case .failure(_):
+                self.ui?.showError()
             }
         }
     }
@@ -41,6 +47,7 @@ protocol SuperHeroesUI: class {
     func hideLoader()
     func showEmptyCase()
     func show(items: [SuperHero])
+    func showError()
     func openSuperHeroDetailScreen(_ superHeroDetailViewController: UIViewController)
 
 }

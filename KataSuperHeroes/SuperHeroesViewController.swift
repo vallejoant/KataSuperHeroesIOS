@@ -40,6 +40,10 @@ class SuperHeroesViewController: KataSuperHeroesViewController, SuperHeroesUI {
         dataSource.items = items
         tableView.reloadData()
     }
+    
+    func showError() {
+        emptyCaseView.isHidden = false
+    }
 
     fileprivate func configureNavigationBarBackButton() {
         navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)

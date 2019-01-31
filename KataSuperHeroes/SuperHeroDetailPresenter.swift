@@ -25,16 +25,20 @@ class SuperHeroDetailPresenter {
         ui?.showLoader()
         getSuperHeroByName.execute(superHeroName) { superHero in
             self.ui?.hideLoader()
-            self.ui?.show(superHero: superHero)
+            if let superHero = superHero {
+                self.ui?.show(superHero: superHero)
+            } else {
+                self.ui?.showError()
+            }
         }
     }
-
 }
 
 protocol SuperHeroDetailUI: class {
     func showLoader()
     func hideLoader()
     var title: String? {get set}
-    func show(superHero: SuperHero?)
+    func show(superHero: SuperHero)
+    func showError()
 
 }

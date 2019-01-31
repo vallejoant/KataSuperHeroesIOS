@@ -13,6 +13,8 @@
 		49538C4421F754210018AAC9 /* SuperHeroesTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49538C4221F754210018AAC9 /* SuperHeroesTableViewDelegate.swift */; };
 		49538C4821F754320018AAC9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49538C4621F754320018AAC9 /* LoadingView.swift */; };
 		49538C4921F754320018AAC9 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49538C4721F754320018AAC9 /* LoadingView.xib */; };
+		AEFDCDFD2201F4A100C01A52 /* SuperHeroDetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFDCDFC2201F4A100C01A52 /* SuperHeroDetailViewControllerTests.swift */; };
+		AEFDCE0322021C3B00C01A52 /* SuperHeroAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFDCE0222021C3B00C01A52 /* SuperHeroAPIError.swift */; };
 		EB8705FF1C46508E00B66C19 /* XCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8705FE1C46508E00B66C19 /* XCTestCase.swift */; };
 		EB8706011C46510300B66C19 /* KIFTestActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8706001C46510300B66C19 /* KIFTestActor.swift */; };
 		EB8706031C46513E00B66C19 /* SuperHeroesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8706021C46513E00B66C19 /* SuperHeroesViewControllerTests.swift */; };
@@ -60,6 +62,8 @@
 		7FC32F3D31A7392656DF9EC8 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91340F19D0D930E9F02F1DEA /* Pods-KataSuperHeroesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KataSuperHeroesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KataSuperHeroesTests/Pods-KataSuperHeroesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		981F37EA85F06E461D7BE716 /* Pods-KataSuperHeroesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KataSuperHeroesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KataSuperHeroesTests/Pods-KataSuperHeroesTests.release.xcconfig"; sourceTree = "<group>"; };
+		AEFDCDFC2201F4A100C01A52 /* SuperHeroDetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperHeroDetailViewControllerTests.swift; sourceTree = "<group>"; };
+		AEFDCE0222021C3B00C01A52 /* SuperHeroAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperHeroAPIError.swift; sourceTree = "<group>"; };
 		EB8705FE1C46508E00B66C19 /* XCTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestCase.swift; sourceTree = "<group>"; };
 		EB8706001C46510300B66C19 /* KIFTestActor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KIFTestActor.swift; sourceTree = "<group>"; };
 		EB8706021C46513E00B66C19 /* SuperHeroesViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperHeroesViewControllerTests.swift; sourceTree = "<group>"; };
@@ -127,6 +131,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AEFDCE0122021C2700C01A52 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				AEFDCE0222021C3B00C01A52 /* SuperHeroAPIError.swift */,
+			);
+			name = Errors;
+			sourceTree = "<group>";
+		};
 		EB8705FD1C46508400B66C19 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				EB8706021C46513E00B66C19 /* SuperHeroesViewControllerTests.swift */,
+				AEFDCDFC2201F4A100C01A52 /* SuperHeroDetailViewControllerTests.swift */,
 			);
 			name = "Super Heroes";
 			sourceTree = "<group>";
@@ -203,6 +216,7 @@
 		EBDE9B761C4518A600E4B4C2 /* Super Heroes */ = {
 			isa = PBXGroup;
 			children = (
+				AEFDCE0122021C2700C01A52 /* Errors */,
 				EBDE9B7F1C451CA600E4B4C2 /* Model */,
 				EBDE9B7E1C451C9D00E4B4C2 /* Presenter */,
 				EBDE9B7D1C451C3B00E4B4C2 /* View */,
@@ -397,10 +411,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-KataSuperHeroes/Pods-KataSuperHeroes-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -451,11 +467,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-KataSuperHeroesTests/Pods-KataSuperHeroesTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/KIF/KIF.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KIF.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 			);
@@ -472,6 +490,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49538C4421F754210018AAC9 /* SuperHeroesTableViewDelegate.swift in Sources */,
+				AEFDCE0322021C3B00C01A52 /* SuperHeroAPIError.swift in Sources */,
 				EBDE9B841C451CE500E4B4C2 /* SuperHeroesPresenter.swift in Sources */,
 				EBDB2D0B1C456129001FC84B /* SuperHeroDetailPresenter.swift in Sources */,
 				EBDE9B8E1C45448F00E4B4C2 /* SuperHeroTableViewCell.swift in Sources */,
@@ -496,6 +515,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB8706091C4656C800B66C19 /* MockSuperHeroesRepository.swift in Sources */,
+				AEFDCDFD2201F4A100C01A52 /* SuperHeroDetailViewControllerTests.swift in Sources */,
 				EB8706011C46510300B66C19 /* KIFTestActor.swift in Sources */,
 				EB8705FF1C46508E00B66C19 /* XCTestCase.swift in Sources */,
 				EB8706051C4653AC00B66C19 /* AcceptanceTestCase.swift in Sources */,

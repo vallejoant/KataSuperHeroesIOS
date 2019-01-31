@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Result
 
 class GetSuperHeroes {
 
@@ -16,9 +17,9 @@ class GetSuperHeroes {
         self.repository = repository
     }
 
-    func execute(_ completion: @escaping ([SuperHero]) -> ()) {
-        repository.getAll() { superHeroes in
-            completion(superHeroes)
+    func execute(_ completion: @escaping (Result<[SuperHero], SuperHeroAPIError>) -> ()) {
+        repository.getAll() { result in
+            completion(result)
         }
     }
 }
